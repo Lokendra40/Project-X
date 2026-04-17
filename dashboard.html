@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="romantic">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private World For Couples — Dashboard</title>
+    <meta name="description" content="A private digital world only for two people. Your romantic dashboard to manage memories, love notes, and special moments together." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+  </head>
+  <body>
+    <!-- Ambient Background -->
+    <div class="ambient-bg">
+      <div class="ambient-orb ambient-orb-1"></div>
+      <div class="ambient-orb ambient-orb-2"></div>
+      <div class="ambient-orb ambient-orb-3"></div>
+    </div>
+
+    <!-- Floating Hearts (decorative) -->
+    <div class="floating-hearts" id="floatingHearts" aria-hidden="true"></div>
+
+    <div class="app-layout">
+      <!-- ═══════════════════════════════════════ -->
+      <!-- LEFT SIDEBAR -->
+      <!-- ═══════════════════════════════════════ -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+          <!-- Logo -->
+          <div class="sidebar-logo" id="sidebarLogo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M16 28S4 20 4 12a6 6 0 0 1 12 0 6 6 0 0 1 12 0c0 8-12 16-12 16Z" fill="currentColor" opacity="0.9"/>
+                <path d="M16 28S4 20 4 12a6 6 0 0 1 12 0 6 6 0 0 1 12 0c0 8-12 16-12 16Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.3"/>
+              </svg>
+            </div>
+            <span class="logo-text">PW</span>
+          </div>
+
+          <!-- Primary Nav -->
+          <nav class="sidebar-nav">
+            <ul class="nav-list" id="navList">
+              <li class="nav-item active" data-page="dashboard">
+                <a href="#dashboard" class="nav-link" id="nav-dashboard">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+                  </span>
+                  <span class="nav-label">Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="our-space">
+                <a href="#our-space" class="nav-link" id="nav-our-space">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  </span>
+                  <span class="nav-label">Our Space ❤️</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="memories">
+                <a href="#memories" class="nav-link" id="nav-memories">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  </span>
+                  <span class="nav-label">Memories 📸</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="love-chat">
+                <a href="#love-chat" class="nav-link" id="nav-love-chat">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </span>
+                  <span class="nav-label">Love Chat 💬</span>
+                  <span class="nav-badge">3</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="special-dates">
+                <a href="#special-dates" class="nav-link" id="nav-special-dates">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/></svg>
+                  </span>
+                  <span class="nav-label">Special Dates 🎉</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="mood">
+                <a href="#mood" class="nav-link" id="nav-mood">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                  </span>
+                  <span class="nav-label">Mood 😊</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="love-stats">
+                <a href="#love-stats" class="nav-link" id="nav-love-stats">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  </span>
+                  <span class="nav-label">Love Stats ❤️‍🔥</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="nav-divider"></div>
+
+            <ul class="nav-list nav-secondary">
+              <li class="nav-item" data-page="airdraw">
+                <a href="air-draw/index.html" class="nav-link" id="nav-airdraw">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+                  </span>
+                  <span class="nav-label">AirDraw AI ✨</span>
+                  <span class="nav-badge nav-badge-wip">WIP</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="surprises">
+                <a href="#surprises" class="nav-link" id="nav-surprises">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="14" rx="2"/><path d="M12 8V22"/><path d="M3 12h18"/><path d="M12 8a4 4 0 0 0-4-4c-1.5 0-4 1.5-4 4"/><path d="M12 8a4 4 0 0 1 4-4c1.5 0 4 1.5 4 4"/></svg>
+                  </span>
+                  <span class="nav-label">Surprises 🎁</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="privacy">
+                <a href="#privacy" class="nav-link" id="nav-privacy">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  </span>
+                  <span class="nav-label">Privacy & Lock 🔒</span>
+                </a>
+              </li>
+            </ul>
+
+            <div class="nav-divider"></div>
+
+            <ul class="nav-list nav-bottom">
+              <li class="nav-item" data-page="settings">
+                <a href="#settings" class="nav-link" id="nav-settings">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </span>
+                  <span class="nav-label">Settings ⚙️</span>
+                </a>
+              </li>
+              <li class="nav-item" data-page="help">
+                <a href="#help" class="nav-link" id="nav-help">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                  </span>
+                  <span class="nav-label">Help & Support ❓</span>
+                </a>
+              </li>
+              <li class="nav-item nav-item-logout">
+                <a href="#logout" class="nav-link" id="nav-logout">
+                  <span class="nav-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  </span>
+                  <span class="nav-label">Logout 🚪</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Sidebar Toggle -->
+          <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- ═══════════════════════════════════════ -->
+      <!-- MAIN AREA -->
+      <!-- ═══════════════════════════════════════ -->
+      <div class="main-area">
+        <!-- TOP NAVBAR -->
+        <header class="topbar" id="topbar">
+          <div class="topbar-left">
+            <button class="topbar-menu-btn" id="mobileMenuBtn" title="Open menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <h1 class="topbar-greeting" id="topbarGreeting">
+              Hey <span class="name-you">Lokendra</span> ❤️ <span class="name-partner">Palak</span>
+            </h1>
+          </div>
+          <div class="topbar-center">
+            <div class="search-box" id="searchBox">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" class="search-input" id="searchInput" placeholder="Search memories, dates, notes..." />
+            </div>
+          </div>
+          <div class="topbar-right">
+            <!-- Theme Toggle -->
+            <div class="theme-switcher" id="themeSwitcher">
+              <button class="theme-btn active" data-theme="romantic" title="Soft Romantic">
+                <span>🌸</span>
+              </button>
+              <button class="theme-btn" data-theme="light" title="Clean Light">
+                <span>☀️</span>
+              </button>
+              <button class="theme-btn" data-theme="dark" title="Dark Intimate">
+                <span>🌙</span>
+              </button>
+            </div>
+            <!-- Notifications -->
+            <button class="topbar-icon-btn" id="notifBtn" title="Notifications">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span class="notif-dot"></span>
+            </button>
+            <!-- Profile -->
+            <div class="profile-dropdown" id="profileDropdown">
+              <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">LP</div>
+                <svg class="profile-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="profile-menu" id="profileMenu">
+                <div class="profile-menu-header">
+                  <div class="profile-avatar-lg">LP</div>
+                  <div>
+                    <p class="profile-menu-name">Lokendra</p>
+                    <p class="profile-menu-role">Partner One 💕</p>
+                  </div>
+                </div>
+                <div class="profile-menu-divider"></div>
+                <a href="#settings" class="profile-menu-item" id="menu-settings">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9"/></svg>
+                  Account Settings
+                </a>
+                <a href="#privacy" class="profile-menu-item" id="menu-privacy">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  Privacy Settings
+                </a>
+                <div class="profile-menu-divider"></div>
+                <a href="#logout" class="profile-menu-item profile-menu-logout" id="menu-logout">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- ═══════════════════════════════════════ -->
+        <!-- DASHBOARD CONTENT -->
+        <!-- ═══════════════════════════════════════ -->
+        <main class="dashboard-content" id="dashboardContent">
+          <div class="dashboard-grid">
+            <!-- LEFT COLUMN -->
+            <div class="dashboard-main">
+
+              <!-- Welcome Card -->
+              <section class="card welcome-card" id="welcomeCard">
+                <div class="welcome-bg-art" aria-hidden="true">
+                  <div class="welcome-circle welcome-circle-1"></div>
+                  <div class="welcome-circle welcome-circle-2"></div>
+                </div>
+                <div class="welcome-content">
+                  <p class="welcome-tag">Good evening, lovebirds 💕</p>
+                  <h2 class="welcome-title">Welcome back to your world</h2>
+                  <p class="welcome-quote" id="loveQuote">"The best thing to hold onto in life is each other." — Audrey Hepburn</p>
+                  <div class="welcome-meta">
+                    <span class="welcome-date" id="welcomeDate"></span>
+                    <span class="welcome-dot">•</span>
+                    <span class="welcome-weather">Feeling lovely today ✨</span>
+                  </div>
+                </div>
+                <div class="welcome-illustration" aria-hidden="true">
+                  <div class="couple-silhouette">
+                    <div class="heart-float heart-float-1">💕</div>
+                    <div class="heart-float heart-float-2">💗</div>
+                    <div class="heart-float heart-float-3">✨</div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Love Stats Cards -->
+              <section class="stats-row" id="statsRow">
+                <div class="stat-card" id="stat-days">
+                  <div class="stat-icon-wrap stat-icon-pink">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <p class="stat-value" id="daysTogether">487</p>
+                    <p class="stat-label">Days Together</p>
+                  </div>
+                </div>
+                <div class="stat-card" id="stat-memories">
+                  <div class="stat-icon-wrap stat-icon-purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <p class="stat-value" id="totalMemories">24</p>
+                    <p class="stat-label">Total Memories</p>
+                  </div>
+                </div>
+                <div class="stat-card" id="stat-messages">
+                  <div class="stat-icon-wrap stat-icon-coral">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <p class="stat-value" id="messagesSent">1.2k</p>
+                    <p class="stat-label">Messages Sent</p>
+                  </div>
+                </div>
+                <div class="stat-card" id="stat-love-score">
+                  <div class="stat-icon-wrap stat-icon-gold">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </div>
+                  <div class="stat-info">
+                    <p class="stat-value" id="loveScore">98%</p>
+                    <p class="stat-label">Love Score</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Memory Cards Section -->
+              <section class="card memories-section" id="memoriesSection">
+                <div class="card-header">
+                  <h3 class="card-title">Recent Memories 📸</h3>
+                  <a href="#memories" class="card-link">See all →</a>
+                </div>
+                <div class="polaroid-grid" id="polaroidGrid">
+                  <div class="polaroid-card polaroid-tilt-1">
+                    <div class="polaroid-img">
+                      <img src="assets/cab-memory.jpg" alt="A special moment together" loading="lazy"/>
+                    </div>
+                    <div class="polaroid-caption">
+                      <p>Our first ride together 🚕</p>
+                      <span class="polaroid-date">Dec 2025</span>
+                    </div>
+                  </div>
+                  <div class="polaroid-card polaroid-tilt-2">
+                    <div class="polaroid-img">
+                      <img src="assets/blue-poshak.jpg" alt="Beautiful moment captured" loading="lazy"/>
+                    </div>
+                    <div class="polaroid-caption">
+                      <p>You looked stunning 💙</p>
+                      <span class="polaroid-date">Jan 2026</span>
+                    </div>
+                  </div>
+                  <div class="polaroid-card polaroid-tilt-3">
+                    <div class="polaroid-img">
+                      <img src="assets/memory-3-amity.jpg" alt="A night to remember" loading="lazy"/>
+                    </div>
+                    <div class="polaroid-caption">
+                      <p>That night at Amity ✨</p>
+                      <span class="polaroid-date">Feb 2026</span>
+                    </div>
+                  </div>
+                  <div class="polaroid-card polaroid-tilt-4">
+                    <div class="polaroid-img">
+                      <img src="assets/new-year-party.jpg" alt="New Year celebration" loading="lazy"/>
+                    </div>
+                    <div class="polaroid-caption">
+                      <p>New Year's magic 🎆</p>
+                      <span class="polaroid-date">Jan 2026</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Special Dates Widget -->
+              <section class="card special-dates-card" id="specialDatesCard">
+                <div class="card-header">
+                  <h3 class="card-title">Special Dates 🎉</h3>
+                  <a href="#special-dates" class="card-link">Manage →</a>
+                </div>
+                <div class="dates-grid">
+                  <div class="date-countdown-card" id="anniversaryCountdown">
+                    <div class="countdown-ring">
+                      <svg viewBox="0 0 100 100" class="countdown-svg">
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="4" opacity="0.1"/>
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round" class="countdown-progress"/>
+                      </svg>
+                      <div class="countdown-value">
+                        <span class="countdown-number" id="countdownDays">241</span>
+                        <span class="countdown-unit">days</span>
+                      </div>
+                    </div>
+                    <div class="countdown-info">
+                      <h4>Anniversary 💍</h4>
+                      <p>December 11, 2026</p>
+                      <span class="countdown-label">Until your special day</span>
+                    </div>
+                  </div>
+                  <div class="upcoming-dates" id="upcomingDates">
+                    <div class="upcoming-item">
+                      <div class="upcoming-icon">🎂</div>
+                      <div class="upcoming-details">
+                        <p class="upcoming-name">Palak's Birthday</p>
+                        <p class="upcoming-date">June 15, 2026</p>
+                      </div>
+                      <span class="upcoming-badge">62 days</span>
+                    </div>
+                    <div class="upcoming-item">
+                      <div class="upcoming-icon">🌹</div>
+                      <div class="upcoming-details">
+                        <p class="upcoming-name">Valentine's Day</p>
+                        <p class="upcoming-date">February 14, 2027</p>
+                      </div>
+                      <span class="upcoming-badge">306 days</span>
+                    </div>
+                    <div class="upcoming-item">
+                      <div class="upcoming-icon">✈️</div>
+                      <div class="upcoming-details">
+                        <p class="upcoming-name">Trip to Goa</p>
+                        <p class="upcoming-date">May 20, 2026</p>
+                      </div>
+                      <span class="upcoming-badge">36 days</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- AirDraw AI Demo Showcase Card -->
+              <section class="card airdraw-card" id="airdrawCard">
+                <div class="airdraw-card-glow" aria-hidden="true"></div>
+                <div class="airdraw-card-content">
+                  <div class="airdraw-header">
+                    <div class="airdraw-title-row">
+                      <h3 class="airdraw-title">✨ AirDraw AI</h3>
+                      <span class="wip-badge">🔧 Work in Progress</span>
+                    </div>
+                    <p class="airdraw-desc">Draw in the air using hand gestures! AI-powered hand tracking turns your webcam into a creative canvas.</p>
+                  </div>
+
+                  <div class="airdraw-features">
+                    <div class="airdraw-feature">
+                      <span class="af-icon">☝️</span>
+                      <div class="af-info">
+                        <span class="af-name">Air Drawing</span>
+                        <span class="af-status done">✅ Done</span>
+                      </div>
+                    </div>
+                    <div class="airdraw-feature">
+                      <span class="af-icon">🤖</span>
+                      <div class="af-info">
+                        <span class="af-name">Hand Tracking</span>
+                        <span class="af-status done">✅ Done</span>
+                      </div>
+                    </div>
+                    <div class="airdraw-feature">
+                      <span class="af-icon">✋</span>
+                      <div class="af-info">
+                        <span class="af-name">Gesture Controls</span>
+                        <span class="af-status done">✅ Done</span>
+                      </div>
+                    </div>
+                    <div class="airdraw-feature">
+                      <span class="af-icon">🎨</span>
+                      <div class="af-info">
+                        <span class="af-name">Neon Glow Effects</span>
+                        <span class="af-status done">✅ Done</span>
+                      </div>
+                    </div>
+                    <div class="airdraw-feature">
+                      <span class="af-icon">🧩</span>
+                      <div class="af-info">
+                        <span class="af-name">Full Integration</span>
+                        <span class="af-status wip">🔄 In Progress</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="airdraw-progress-row">
+                    <div class="airdraw-progress-bar">
+                      <div class="airdraw-progress-fill" style="width: 80%"></div>
+                    </div>
+                    <span class="airdraw-progress-label">80% Complete</span>
+                  </div>
+
+                  <a href="air-draw/index.html" class="airdraw-launch-btn" id="launchAirdraw">
+                    <span>🚀</span> Launch AirDraw Demo
+                  </a>
+                </div>
+              </section>
+
+              <!-- Quick Actions -->
+              <section class="quick-actions" id="quickActions">
+                <button class="quick-action-btn" id="btn-add-memory">
+                  <span class="qa-icon">📸</span>
+                  <span class="qa-label">Add Memory</span>
+                </button>
+                <button class="quick-action-btn" id="btn-send-note">
+                  <span class="qa-icon">💌</span>
+                  <span class="qa-label">Send Love Note</span>
+                </button>
+                <button class="quick-action-btn" id="btn-upload-photo">
+                  <span class="qa-icon">🖼️</span>
+                  <span class="qa-label">Upload Photo</span>
+                </button>
+                <button class="quick-action-btn" id="btn-set-mood">
+                  <span class="qa-icon">😊</span>
+                  <span class="qa-label">Set Mood</span>
+                </button>
+              </section>
+            </div>
+
+            <!-- RIGHT COLUMN — Activity Panel -->
+            <aside class="dashboard-sidebar" id="activityPanel">
+              <!-- Couple Status -->
+              <div class="card couple-status-card" id="coupleStatusCard">
+                <div class="couple-avatars">
+                  <div class="couple-avatar avatar-you">
+                    <span>L</span>
+                  </div>
+                  <div class="couple-heart-connector">
+                    <svg viewBox="0 0 32 32" fill="currentColor" width="20" height="20">
+                      <path d="M16 28S4 20 4 12a6 6 0 0 1 12 0 6 6 0 0 1 12 0c0 8-12 16-12 16Z"/>
+                    </svg>
+                  </div>
+                  <div class="couple-avatar avatar-partner">
+                    <span>P</span>
+                  </div>
+                </div>
+                <p class="couple-label">Lokendra & Palak</p>
+                <p class="couple-since">Together since Dec 11, 2025</p>
+                <div class="couple-mood-row">
+                  <div class="mood-bubble">
+                    <span>😊</span>
+                    <small>Your mood</small>
+                  </div>
+                  <div class="mood-bubble">
+                    <span>🥰</span>
+                    <small>Partner's mood</small>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Activity Timeline -->
+              <div class="card activity-card" id="activityCard">
+                <div class="card-header">
+                  <h3 class="card-title">Activity 💫</h3>
+                  <span class="card-badge">Today</span>
+                </div>
+                <ul class="activity-list" id="activityList">
+                  <li class="activity-item">
+                    <div class="activity-dot activity-dot-pink"></div>
+                    <div class="activity-content">
+                      <p class="activity-text">You added a new photo 📸</p>
+                      <span class="activity-time">2 min ago</span>
+                    </div>
+                  </li>
+                  <li class="activity-item">
+                    <div class="activity-dot activity-dot-purple"></div>
+                    <div class="activity-content">
+                      <p class="activity-text">Palak sent a love note 💌</p>
+                      <span class="activity-time">15 min ago</span>
+                    </div>
+                  </li>
+                  <li class="activity-item">
+                    <div class="activity-dot activity-dot-coral"></div>
+                    <div class="activity-content">
+                      <p class="activity-text">New memory added to album</p>
+                      <span class="activity-time">1 hr ago</span>
+                    </div>
+                  </li>
+                  <li class="activity-item">
+                    <div class="activity-dot activity-dot-gold"></div>
+                    <div class="activity-content">
+                      <p class="activity-text">Mood check-in: Feeling happy 😊</p>
+                      <span class="activity-time">3 hrs ago</span>
+                    </div>
+                  </li>
+                  <li class="activity-item">
+                    <div class="activity-dot activity-dot-pink"></div>
+                    <div class="activity-content">
+                      <p class="activity-text">Palak liked your message ❤️</p>
+                      <span class="activity-time">5 hrs ago</span>
+                    </div>
+                  </li>
+                  <li class="activity-item">
+                    <div class="activity-dot activity-dot-purple"></div>
+                    <div class="activity-content">
+                      <p class="activity-text">Trip to Goa added to dates ✈️</p>
+                      <span class="activity-time">Yesterday</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Mini Love Note Widget -->
+              <div class="card love-note-card" id="loveNoteCard">
+                <h4 class="love-note-title">Quick Love Note 💝</h4>
+                <textarea class="love-note-input" id="quickNoteInput" placeholder="Write something sweet..." rows="3"></textarea>
+                <button class="love-note-send" id="sendQuickNote">
+                  Send to Palak 💌
+                </button>
+              </div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

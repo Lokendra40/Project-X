@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirDraw AI — Draw in the Air with Hand Gestures</title>
+    <meta name="description" content="An AI-powered drawing tool that uses your webcam and hand gestures to let you draw in the air in real-time using MediaPipe hand tracking.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===================== LOADING SCREEN ===================== -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-ring">
+                <div></div><div></div><div></div><div></div>
+            </div>
+            <h2 class="loading-title">AirDraw <span>AI</span></h2>
+            <p class="loading-subtitle" id="loadingText">Initializing hand tracking model...</p>
+            <div class="loading-bar">
+                <div class="loading-bar-fill" id="loadingBarFill"></div>
+            </div>
+        </div>
+        <div class="loading-bg-glow"></div>
+    </div>
+
+    <!-- ===================== MAIN APP ===================== -->
+    <div id="app" class="app hidden">
+
+        <!-- Camera + Canvas Stack -->
+        <div class="canvas-wrapper" id="canvasWrapper">
+            <video id="webcam" autoplay playsinline muted></video>
+            <canvas id="drawCanvas"></canvas>
+            <canvas id="overlayCanvas"></canvas>
+            <div class="vignette-overlay"></div>
+        </div>
+
+        <!-- ===== Top Status Bar ===== -->
+        <header class="top-bar" id="topBar">
+            <div class="top-bar-left">
+                <h1 class="logo">
+                    <span class="logo-icon">✨</span>
+                    <span class="logo-text">AirDraw</span>
+                    <span class="logo-badge">AI</span>
+                </h1>
+            </div>
+            <div class="top-bar-center">
+                <div class="status-pill" id="statusPill">
+                    <span class="status-dot" id="statusDot"></span>
+                    <span class="status-text" id="statusText">Starting...</span>
+                </div>
+                <div class="gesture-pill" id="gesturePill">
+                    <span class="gesture-icon" id="gestureIcon">✋</span>
+                    <span class="gesture-text" id="gestureText">IDLE</span>
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <div class="fps-counter" id="fpsCounter">-- FPS</div>
+            </div>
+        </header>
+
+        <!-- ===== Side Controls Panel ===== -->
+        <aside class="controls-panel" id="controlsPanel">
+            <button class="panel-toggle" id="panelToggle" aria-label="Toggle controls panel">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M12 4L6 10L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+
+            <div class="panel-content" id="panelContent">
+                <!-- Color Section -->
+                <div class="control-section">
+                    <div class="section-label"><span>🎨</span> Brush Color</div>
+                    <div class="color-grid" id="colorGrid"></div>
+                    <div class="custom-color-row">
+                        <input type="color" id="customColorInput" value="#00d4ff" class="custom-color-input">
+                        <label for="customColorInput" class="custom-color-label">Custom</label>
+                    </div>
+                </div>
+
+                <!-- Brush Size -->
+                <div class="control-section">
+                    <div class="section-label">
+                        <span>✏️</span> Brush Size
+                        <span class="size-value" id="sizeValue">6px</span>
+                    </div>
+                    <div class="slider-wrapper">
+                        <input type="range" id="brushSizeSlider" min="2" max="40" value="6" class="slider" aria-label="Brush size">
+                    </div>
+                    <div class="brush-preview-row">
+                        <div class="brush-preview" id="brushPreview"></div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="control-section">
+                    <div class="section-label"><span>⚡</span> Actions</div>
+                    <div class="action-buttons">
+                        <button id="clearBtn" class="action-btn danger">
+                            <span class="btn-icon">🗑️</span><span>Clear</span>
+                        </button>
+                        <button id="cameraBtn" class="action-btn secondary">
+                            <span class="btn-icon">📷</span><span>Camera</span>
+                        </button>
+                        <button id="saveBtn" class="action-btn primary">
+                            <span class="btn-icon">💾</span><span>Save</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Gesture Guide -->
+                <div class="control-section gesture-guide-section">
+                    <div class="section-label"><span>📖</span> Gestures</div>
+                    <div class="gesture-list">
+                        <div class="gesture-item">
+                            <span class="g-icon">☝️</span>
+                            <div class="g-info">
+                                <span class="g-name">Point</span>
+                                <span class="g-desc">Draw</span>
+                            </div>
+                        </div>
+                        <div class="gesture-item">
+                            <span class="g-icon">✊</span>
+                            <div class="g-info">
+                                <span class="g-name">Fist</span>
+                                <span class="g-desc">Stop drawing</span>
+                            </div>
+                        </div>
+                        <div class="gesture-item">
+                            <span class="g-icon">✌️</span>
+                            <div class="g-info">
+                                <span class="g-name">Peace</span>
+                                <span class="g-desc">Clear canvas</span>
+                            </div>
+                        </div>
+                        <div class="gesture-item">
+                            <span class="g-icon">🖐️</span>
+                            <div class="g-info">
+                                <span class="g-name">Palm</span>
+                                <span class="g-desc">Next color</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Clear Progress Ring Overlay -->
+        <div class="clear-progress" id="clearProgress">
+            <svg class="clear-ring-svg" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" class="clear-ring-bg"/>
+                <circle cx="60" cy="60" r="52" class="clear-ring-fill" id="clearRingFill"/>
+            </svg>
+            <span class="clear-label">✌️ Clearing...</span>
+        </div>
+
+        <!-- Color Change Flash -->
+        <div class="color-flash" id="colorFlash"></div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <span class="toast-icon" id="toastIcon">✅</span>
+            <span class="toast-text" id="toastText"></span>
+        </div>
+    </div>
+
+    <!-- ===================== SCRIPTS ===================== -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+</html>

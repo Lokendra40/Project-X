@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Private World — You've Been Invited</title>
+    <meta name="description" content="You've been invited to join a private world. Enter your invite code to connect with your partner." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="join.css" />
+  </head>
+  <body>
+    <!-- Background -->
+    <section class="join-page">
+      <div class="join-backdrop">
+        <div class="join-orb join-orb-1"></div>
+        <div class="join-orb join-orb-2"></div>
+        <div class="join-orb join-orb-3"></div>
+      </div>
+
+      <!-- Floating Particles -->
+      <div class="join-particles" id="joinParticles"></div>
+
+      <div class="join-container">
+
+        <!-- ═══ STATE 1: Join Card ═══ -->
+        <div class="join-card" id="joinCard">
+          <div class="join-card-glow"></div>
+          <div class="join-card-glow secondary"></div>
+
+          <!-- Top badge -->
+          <div class="join-card-header">
+            <div class="join-lock-icon">
+              <span class="join-lock-emoji">🔒</span>
+              <div class="join-lock-ring"></div>
+            </div>
+            <p class="join-badge">Private Invitation</p>
+          </div>
+
+          <!-- Main Content -->
+          <div class="join-card-body">
+            <h1 class="join-title">You've Been Invited <span class="join-heart-icon">❤️</span></h1>
+            <p class="join-subtitle">Someone special invited you to join their private world.</p>
+
+            <div class="join-divider">
+              <span>💕</span>
+            </div>
+
+            <!-- Invite Code Input -->
+            <div class="join-form" id="joinForm">
+              <label for="joinCodeInput" class="join-label">Invite Code</label>
+              <div class="join-input-wrap">
+                <span class="join-input-icon">🔑</span>
+                <input
+                  id="joinCodeInput"
+                  type="text"
+                  placeholder="Enter your invite code (e.g., PW-AB12CD)"
+                  autocomplete="off"
+                  spellcheck="false"
+                />
+                <div class="join-input-glow"></div>
+              </div>
+              <span class="join-helper">Paste the code your partner shared with you</span>
+              <p id="joinError" class="join-error hidden"></p>
+            </div>
+
+            <!-- Auto-detected code display -->
+            <div class="join-detected hidden" id="joinDetected">
+              <div class="join-detected-icon">✨</div>
+              <div class="join-detected-info">
+                <p class="join-detected-label">Invite code detected</p>
+                <p class="join-detected-code" id="joinDetectedCode">PW-XXXXXX</p>
+              </div>
+              <div class="join-detected-check">✓</div>
+            </div>
+
+            <!-- Privacy Note -->
+            <div class="join-privacy-note">
+              <span>🔒</span>
+              <p>This world is shared between only two people. No one else can access it.</p>
+            </div>
+          </div>
+
+          <!-- Action -->
+          <div class="join-actions">
+            <button id="joinBtn" class="join-submit-btn" disabled>
+              <span class="join-btn-text">Join the World</span>
+              <span class="join-btn-icon">→</span>
+            </button>
+            <a href="index.html" class="join-back-link">← Back to Home</a>
+          </div>
+        </div>
+
+        <!-- ═══ STATE 2: Loading ═══ -->
+        <div class="join-loading hidden" id="joinLoading">
+          <div class="join-loading-card">
+            <div class="join-loading-hearts">
+              <span class="join-loading-heart h1">💗</span>
+              <span class="join-loading-heart h2">💖</span>
+              <span class="join-loading-heart h3">💗</span>
+            </div>
+            <h2>Connecting You…</h2>
+            <p>Setting up your private space together</p>
+            <div class="join-loading-bar">
+              <div class="join-loading-fill"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ═══ STATE 3: Success ═══ -->
+        <div class="join-success hidden" id="joinSuccess">
+          <div class="join-success-card">
+            <div class="join-success-glow"></div>
+
+            <!-- Sparkle burst -->
+            <div class="join-sparkles" id="joinSparkles"></div>
+
+            <div class="join-success-icon">
+              <span>✨</span>
+              <div class="join-success-ring"></div>
+              <div class="join-success-ring ring-2"></div>
+            </div>
+
+            <h1 class="join-success-title">You're In <span class="join-sparkle-text">✨</span></h1>
+            <p class="join-success-subtitle">You are now part of something private and special.</p>
+
+            <div class="join-success-divider">
+              <span>💕</span>
+            </div>
+
+            <div class="join-success-info">
+              <div class="join-success-badge">
+                <span>🔒</span>
+                <p>This world is shared between only two people</p>
+              </div>
+
+              <div class="join-success-names" id="joinSuccessNames">
+                <div class="join-name-bubble you">
+                  <span class="join-name-avatar">💜</span>
+                  <span id="joinYourName">You</span>
+                </div>
+                <div class="join-names-heart">❤️</div>
+                <div class="join-name-bubble partner">
+                  <span class="join-name-avatar">💖</span>
+                  <span id="joinPartnerName">Your Partner</span>
+                </div>
+              </div>
+            </div>
+
+            <button id="enterWorldBtn" class="join-enter-btn">
+              <span class="join-enter-text">Enter Your World</span>
+              <span class="join-enter-icon">💖</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="join.js"></script>
+  </body>
+</html>

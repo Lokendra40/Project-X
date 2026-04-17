@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Private Reveal Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg1: #fff0f5;
+        --bg2: #ffe4d6;
+        --ink: #3f2330;
+        --accent: #e64278;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow: hidden;
+        font-family: "Manrope", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at 15% 10%, var(--bg1) 0%, #fff9f4 40%, var(--bg2) 100%);
+        display: grid;
+        place-items: center;
+      }
+
+      .center-note {
+        text-align: center;
+        z-index: 10;
+        padding: 1rem;
+      }
+
+      .center-note h1 {
+        margin: 0;
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(3rem, 11vw, 7rem);
+        color: var(--accent);
+      }
+
+      .center-note p {
+        margin: 0.4rem 0 0;
+        font-weight: 700;
+      }
+
+      .love-lines {
+        margin-top: 0.8rem;
+        display: grid;
+        gap: 0.25rem;
+        font-size: 0.95rem;
+        color: #7b3c57;
+      }
+
+      .popup-love {
+        position: fixed;
+        left: 0;
+        top: 0;
+        font-size: clamp(1rem, 2vw, 1.6rem);
+        font-weight: 800;
+        color: #cc2f63;
+        text-shadow: 0 8px 20px rgba(184, 52, 98, 0.25);
+        pointer-events: none;
+        animation: popFade 2.6s ease forwards;
+        white-space: nowrap;
+        z-index: 15;
+      }
+
+      .heart {
+        position: fixed;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+        font-size: 1.2rem;
+        animation: floatHeart 3.2s ease forwards;
+      }
+
+      .flower,
+      .balloon {
+        position: fixed;
+        left: 0;
+        top: 100vh;
+        pointer-events: none;
+      }
+
+      .flower {
+        font-size: 1.25rem;
+        animation: floatDecor 6s linear forwards;
+      }
+
+      .balloon {
+        font-size: 1.6rem;
+        animation: floatDecor 7.5s linear forwards;
+      }
+
+      @keyframes popFade {
+        0% { opacity: 0; transform: translateY(16px) scale(0.7); }
+        20% { opacity: 1; }
+        100% { opacity: 0; transform: translateY(-30px) scale(1.15); }
+      }
+
+      @keyframes floatHeart {
+        0% { opacity: 0; transform: translateY(8px) scale(0.8); }
+        20% { opacity: 1; }
+        100% { opacity: 0; transform: translateY(-120px) scale(1.3); }
+      }
+
+      @keyframes floatDecor {
+        0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+        12% { opacity: 1; }
+        100% { opacity: 0; transform: translateY(-120vh) rotate(12deg); }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="center-note">
+      <h1>Private World</h1>
+      <p>A premium reveal page reserved for two invited people.</p>
+      <div class="love-lines">
+        <span>Use this page for a surprise note, anniversary reveal, or launch message.</span>
+        <span>It is designed to feel soft, private, and premium.</span>
+        <span>Every line here can become a shared moment worth revisiting. 💖</span>
+        <span>Lock it behind an invite flow, a puzzle, or a private code.</span>
+        <span>Built for two people, and only two people.</span>
+      </div>
+    </div>
+
+    <script>
+      let loveColumn = 0;
+
+      function spawnLoveText() {
+        const text = document.createElement("div");
+        text.className = "popup-love";
+        text.textContent = "Private World";
+        // Force balanced spread across left, center, and right columns.
+        const columns = [
+          [4, 30],   // left
+          [34, 66],  // center
+          [70, 94]   // right
+        ];
+        const [minX, maxX] = columns[loveColumn];
+        text.style.left = `${minX + Math.random() * (maxX - minX)}vw`;
+        text.style.top = `${Math.random() * 86 + 6}vh`;
+        loveColumn = (loveColumn + 1) % columns.length;
+        document.body.appendChild(text);
+        setTimeout(() => text.remove(), 2600);
+      }
+
+      function spawnHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.textContent = ["💖", "💗", "❤️", "💕"][Math.floor(Math.random() * 4)];
+        heart.style.left = `${Math.random() * 90 + 5}vw`;
+        heart.style.top = `${Math.random() * 70 + 15}vh`;
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 3200);
+      }
+
+      function spawnFlower() {
+        const flower = document.createElement("div");
+        flower.className = "flower";
+        flower.textContent = ["🌸", "🌷", "🌼", "💮"][Math.floor(Math.random() * 4)];
+        flower.style.left = `${Math.random() * 95}vw`;
+        document.body.appendChild(flower);
+        setTimeout(() => flower.remove(), 6200);
+      }
+
+      function spawnBalloon() {
+        const balloon = document.createElement("div");
+        balloon.className = "balloon";
+        balloon.textContent = ["🎈", "🎈", "🎀"][Math.floor(Math.random() * 3)];
+        balloon.style.left = `${Math.random() * 95}vw`;
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 7600);
+      }
+
+      setInterval(spawnLoveText, 180);
+      setInterval(spawnHeart, 150);
+      setInterval(spawnFlower, 360);
+      setInterval(spawnBalloon, 650);
+
+      for (let i = 0; i < 40; i += 1) {
+        setTimeout(() => {
+          spawnLoveText();
+          spawnHeart();
+          if (i % 2 === 0) spawnFlower();
+          if (i % 3 === 0) spawnBalloon();
+        }, i * 120);
+      }
+    </script>
+  </body>
+</html>
