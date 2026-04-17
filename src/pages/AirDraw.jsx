@@ -4,7 +4,7 @@ export default function AirDraw() {
   return (
     <div className="airdraw-container" style={{ height: 'calc(100vh - 100px)', borderRadius: '16px', overflow: 'hidden', background: '#000', position: 'relative' }}>
       <iframe 
-        src="/air-draw/index.html" 
+        src="./air-draw/index.html" 
         style={{ 
           width: '100%', 
           height: '100%', 
@@ -17,3 +17,4 @@ export default function AirDraw() {
     </div>
   );
 }
+

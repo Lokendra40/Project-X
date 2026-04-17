@@ -11,10 +11,11 @@ export default function Memories() {
   const [uploadDate, setUploadDate] = useState('');
 
   const featuredStories = [
-    { id: 'blue-poshak', title: 'Blue Poshak', image: '/assets/blue-poshak.jpg', tag: 'Traditional' },
-    { id: 'cab-ride', title: 'The Cab Ride', image: '/assets/cab-memory.jpg', tag: 'Significant' },
-    { id: 'new-year', title: 'NYE 2024', image: '/assets/new-year-party.jpg', tag: 'Celebration' },
+    { id: 'blue-poshak', title: 'Blue Poshak', image: './assets/blue-poshak.jpg', tag: 'Traditional' },
+    { id: 'cab-ride', title: 'The Cab Ride', image: './assets/cab-memory.jpg', tag: 'Significant' },
+    { id: 'new-year', title: 'NYE 2024', image: './assets/new-year-party.jpg', tag: 'Celebration' },
   ];
+
 
   const handleUpload = async (e) => {
     e.preventDefault();

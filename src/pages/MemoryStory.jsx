@@ -6,7 +6,7 @@ const STORIES = {
     title: "💙 Styled Memory Showcase",
     tag: "Product Demo Story",
     theme: "blue-theme",
-    image: "/assets/blue-poshak.jpg",
+    image: "./assets/blue-poshak.jpg",
     content: [
       "This page shows how a couple can give one photo its own atmosphere, title, and written memory. It works especially well for moments that feel visually special, like a celebration, traditional look, event outfit, or a photo that changed the mood of the relationship in a memorable way.",
       "Instead of leaving this kind of moment inside a chat thread, the story page lets both people keep the image, the context, and the emotional meaning together in one place. It turns a single photo into part of a shared archive."
@@ -16,7 +16,7 @@ const STORIES = {
     title: "🚕 Shared Memory Page",
     tag: "Product Demo Story",
     theme: "cab-theme",
-    image: "/assets/cab-memory.jpg",
+    image: "./assets/cab-memory.jpg",
     content: [
       "This page is a demo of how one memory can hold both the photo and the full story behind it. A couple can use this area to save what happened, how it felt, why the moment mattered, and what they want to remember years later.",
       "Instead of keeping everything inside a caption, the memory page gives space for detail: where it happened, what changed in that moment, and why the photo still means something. It is meant to feel private, calm, and worth coming back to."
@@ -26,13 +26,14 @@ const STORIES = {
     title: "✨ NYE 2024 Celebration",
     tag: "New Beginning",
     theme: "dark-theme",
-    image: "/assets/new-year-party.jpg",
+    image: "./assets/new-year-party.jpg",
     content: [
       "The night we promised to make every tomorrow better than today. Surrounded by lights and laughter, but only focused on each other.",
       "A memory etched in gold and shadow, marking the start of a beautiful journey together."
     ]
   }
 };
+
 
 export default function MemoryStory() {
   const { id } = useParams();
