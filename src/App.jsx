@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 
 import DashboardLayout from './layouts/DashboardLayout';
-import Login from './pages/Auth/Login'; // Will map directly
+import Login from './pages/Auth/Login'; 
 import Dashboard from './pages/Dashboard';
 import Memories from './pages/Memories';
 import Chat from './pages/Chat';
@@ -69,5 +69,6 @@ export default function App() {
     </div>
   );
 }
+
 
 
