@@ -14,6 +14,9 @@ import Settings from './pages/Settings';
 
 import { applyTheme } from './styles/theme';
 
+import AirDraw from './pages/AirDraw';
+import MemoryStory from './pages/MemoryStory';
+
 function ProtectedRoute({ children }) {
   const { currentUser, loading } = useAuth();
   if (loading) return <div>Loading love...</div>;
@@ -45,6 +48,7 @@ export default function App() {
               <Route path="/" element={<ProtectedRoute><DashboardLayout changeTheme={changeTheme} currentTheme={theme} /></ProtectedRoute>}>
                 <Route index element={<Dashboard />} />
                 <Route path="memories" element={<Memories />} />
+                <Route path="memory/:id" element={<MemoryStory />} />
                 <Route path="love-chat" element={<Chat />} />
                 <Route path="special-dates" element={<Dates />} />
                 <Route path="mood" element={<Mood />} />
@@ -53,7 +57,7 @@ export default function App() {
                 {/* Fallbacks for unfinished core menus properly structured */}
                 <Route path="our-space" element={<div className="card"><h2>Our Space ❤️</h2><p>Coming Soon!</p></div>} />
                 <Route path="love-stats" element={<div className="card"><h2>Love Stats ❤️‍🔥</h2><p>Coming Soon!</p></div>} />
-                <Route path="airdraw" element={<div className="card"><h2>AirDraw AI ✨</h2><p>Coming Soon!</p></div>} />
+                <Route path="air-draw" element={<AirDraw />} />
                 <Route path="surprises" element={<div className="card"><h2>Surprises 🎁</h2><p>Coming Soon!</p></div>} />
                 <Route path="privacy" element={<div className="card"><h2>Privacy 🔒</h2><p>Coming Soon!</p></div>} />
                 <Route path="help" element={<div className="card"><h2>Help ❓</h2><p>Coming Soon!</p></div>} />
@@ -65,3 +69,5 @@ export default function App() {
     </div>
   );
 }
+
+
