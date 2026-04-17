@@ -109,10 +109,11 @@ export default function Login() {
         </div>
       </div>
 
-      <div className="login-right-panel" style={{ backgroundImage: 'url("/assets/pw_login_hero.png")' }}>
+      <div className="login-right-panel" style={{ backgroundImage: 'url("./assets/pw_login_hero.png")' }}>
          <div className="hero-overlay">
             <div className="hero-content">
-               <h1 className="hero-tagline">Welcome to Your Private World</h1>
+               <h1 className="hero-tagline">Welcome to Your Private World ✨</h1>
+
                <p className="hero-desc">The most intimate space for couples to build, store, and relive their joint history through AI and memories.</p>
                
                <div className="feature-card">
