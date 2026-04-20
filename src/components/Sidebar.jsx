@@ -16,6 +16,7 @@ export default function Sidebar() {
   ];
 
   const secondaryItems = [
+    { id: 'love-draw', icon: 'M12 19l7-7 3 3-7 7-3-3z M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z', d: 'M2 2l7.586 7.586', label: 'Love Draw 🎨', badge: 'NEW', badgeClass: 'nav-badge nav-badge-wip' },
     { id: 'air-draw', icon: 'M12 19l7-7 3 3-7 7-3-3z', d: 'M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5zM2 2l7.586 7.586', circle: '11 11 2', label: 'AirDraw AI ✨', badge: 'WIP', badgeClass: 'nav-badge nav-badge-wip' },
     { id: 'surprises', polyline: '20 12 20 22 4 22 4 12', d: 'M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z', icon: 'M2 7h20v5H2z M12 22V7', label: 'Surprises 🎁' },
     { id: 'privacy', icon: 'M7 11V7a5 5 0 0 1 10 0v4', d: 'M3 11h18v11H3z', label: 'Privacy & Lock 🔒' },

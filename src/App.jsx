@@ -16,6 +16,7 @@ import { applyTheme } from './styles/theme';
 
 import AirDraw from './pages/AirDraw';
 import MemoryStory from './pages/MemoryStory';
+import LoveDraw from './pages/LoveDraw/LoveDraw';
 
 function ProtectedRoute({ children }) {
   const { currentUser, loading } = useAuth();
@@ -58,6 +59,7 @@ export default function App() {
                 <Route path="our-space" element={<div className="card"><h2>Our Space ❤️</h2><p>Coming Soon!</p></div>} />
                 <Route path="love-stats" element={<div className="card"><h2>Love Stats ❤️‍🔥</h2><p>Coming Soon!</p></div>} />
                 <Route path="air-draw" element={<AirDraw />} />
+                <Route path="love-draw" element={<LoveDraw />} />
                 <Route path="surprises" element={<div className="card"><h2>Surprises 🎁</h2><p>Coming Soon!</p></div>} />
                 <Route path="privacy" element={<div className="card"><h2>Privacy 🔒</h2><p>Coming Soon!</p></div>} />
                 <Route path="help" element={<div className="card"><h2>Help ❓</h2><p>Coming Soon!</p></div>} />
